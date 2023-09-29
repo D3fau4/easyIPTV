@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">easyIPTV</string>
+    <string name="media_url_mpd" translatable="false">https://cdn.bitmovin.com/content/assets/art-of-motion-dash-hls-progressive/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd</string>
+    <string name="media_url_drm" translatable="false">https://cwip-shaka-proxy.appspot.com/no_auth</string>
+    <string name="media_url_danz" translatable="false">https://dce-ak-livewwdazn.akamaized.net/dashdrm/dazn-linear-016/stream.mpd</string>
+</resources>
