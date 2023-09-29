@@ -1,51 +1,35 @@
-@file:Suppress("DEPRECATION")
-
 package com.hato.easyiptv
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.exoplayer2.C
-import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.source.DefaultMediaSourceFactory
-import com.google.android.exoplayer2.ui.PlayerView
-import com.google.android.exoplayer2.util.Util
-import com.hato.easyiptv.Utils.StreamData
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.hato.easyiptv.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    var player: SimpleExoPlayer? = null
-    var playerview: PlayerView? = null
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        playerview = findViewById<PlayerView>(R.id.video_view)
-    }
 
-    private fun initializePlayer() {
-        player = SimpleExoPlayer.Builder(this)
-            .setMediaSourceFactory(DefaultMediaSourceFactory(baseContext).setLiveMaxOffsetMs(6000))
-            .build()
-            .also { exoPlayer ->
-                playerview?.player = exoPlayer
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-                var streamdata = StreamData(
-                    "",
-                    "",
-                    "",
-                    "",
-                    C.CLEARKEY_UUID
-                )
-                exoPlayer.setMediaItem(streamdata.buildMediaItem())
-                exoPlayer.prepare()
-                exoPlayer.playWhenReady = true
-            }
-    }
+        val navView: BottomNavigationView = binding.navView
 
-    public override fun onStart() {
-        super.onStart()
-        if (Util.SDK_INT >= 24) {
-            initializePlayer()
-        }
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_dashboard
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 }
