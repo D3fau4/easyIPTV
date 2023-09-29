@@ -12,10 +12,9 @@ import com.j256.ormlite.support.ConnectionSource
 import com.j256.ormlite.table.TableUtils
 import java.lang.Exception
 
-class DBHelper : OrmLiteSqliteOpenHelper {
-    lateinit var context: Context
-    constructor(context: Context) : super(context, BBDDConstants.BBDD_NAME, null, BBDDConstants.BBDD_VERSION) {
-        this.context = context
+class DBHelper(var context: Context) :
+    OrmLiteSqliteOpenHelper(context, BBDDConstants.BBDD_NAME, null, BBDDConstants.BBDD_VERSION) {
+    init {
         this.context.openOrCreateDatabase(BBDDConstants.BBDD_NAME, Context.MODE_PRIVATE, null)
     }
 
@@ -36,7 +35,14 @@ class DBHelper : OrmLiteSqliteOpenHelper {
         oldVersion: Int,
         newVersion: Int
     ) {
-        TODO("Not yet implemented")
+        try {
+            if (connectionSource != null) {
+                BBDDConstants.deleteTables(connectionSource)
+            }
+            onCreate(database, connectionSource)
+        }catch (ex: Exception){
+            ex.printStackTrace()
+        }
     }
 
     fun getChannelDAO() : Dao<Channel, Int>? {
