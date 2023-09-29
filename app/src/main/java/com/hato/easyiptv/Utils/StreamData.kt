@@ -2,7 +2,6 @@
 
 package com.hato.easyiptv.Utils
 
-import android.util.Log
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.util.MimeTypes
 import java.util.UUID
@@ -12,7 +11,7 @@ class StreamData(
     private var streamUrl: String,
     private var clearKey: String?,
     private var clearKeyId: String?,
-    private var schemeType: UUID
+    private var schemeType: UUID,
 ) {
 
 

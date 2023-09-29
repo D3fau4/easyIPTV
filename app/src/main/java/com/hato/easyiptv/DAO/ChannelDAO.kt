@@ -4,7 +4,6 @@ import android.content.Context
 import com.hato.easyiptv.DB.DBHelperMOS
 import com.hato.easyiptv.Models.Channel
 import com.j256.ormlite.dao.Dao
-import java.lang.Exception
 import java.sql.SQLException
 
 class ChannelDAO : DBHelperMOS() {
@@ -20,7 +19,7 @@ class ChannelDAO : DBHelperMOS() {
             cargarDao(context)
             dao?.create(channel)
             return true
-        }catch (ex: Exception){
+        } catch (ex: Exception) {
             ex.printStackTrace()
             return false
         }
