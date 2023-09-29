@@ -4,4 +4,6 @@
     <string name="title_home">Inicio</string>
     <string name="title_dashboard">Menú</string>
     <string name="title_notifications">Notificaciones</string>
+    <string name="channel">01 - Canal</string>
+    <string name="channel_description">10:00 - 10:30 Música TV</string>
 </resources>
