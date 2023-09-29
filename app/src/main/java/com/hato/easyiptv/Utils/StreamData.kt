@@ -9,7 +9,7 @@ import java.util.UUID
 
 class StreamData(
     var licenseUrl: String?,
-    var streamUrl: String?,
+    var streamUrl: String,
     var clearKey: String?,
     var clearKeyId: String?,
     var schemeType: UUID
