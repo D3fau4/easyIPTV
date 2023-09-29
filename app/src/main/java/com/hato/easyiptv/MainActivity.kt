@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.hato.easyiptv
 
 import androidx.appcompat.app.AppCompatActivity
