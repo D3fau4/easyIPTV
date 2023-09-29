@@ -8,11 +8,11 @@ import com.google.android.exoplayer2.util.MimeTypes
 import java.util.UUID
 
 class StreamData(
-    var licenseUrl: String?,
-    var streamUrl: String,
-    var clearKey: String?,
-    var clearKeyId: String?,
-    var schemeType: UUID
+    private var licenseUrl: String?,
+    private var streamUrl: String,
+    private var clearKey: String?,
+    private var clearKeyId: String?,
+    private var schemeType: UUID
 ) {
 
 
